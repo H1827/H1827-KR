@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# 1. check if a filename was provided
+if [ -z "$1" ]; then
+    echo "error: no input file provided"
+    echo "usage: krc <filename.c>"
+    exit 1
+fi
+
+# 2. compile using gcc c89
+c89 -Wall -Wextra -pedantic "$1"
+
+# if compilation was successful run output else error msg
+if [ $? -eq 0 ]; then
+    ./a.out
+else
+    echo "error: compilation failed"
+    echo "see compiler errors"
+    exit 1
+fi
